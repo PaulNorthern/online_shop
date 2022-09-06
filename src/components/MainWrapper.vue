@@ -2,7 +2,10 @@
   <div class="main-wrapper">
     <p>{{ title }}</p>
     <Catalog />
-    <Card />
+    <Card
+        v-if="CART.length"
+        :cart_data="CART"
+    />
   </div>
 </template>
 
@@ -10,6 +13,7 @@
 
 import Catalog from "@/components/Catalog";
 import Card from "@/components/Card";
+import {mapGetters} from "vuex";
 
 export default {
   name: "MainWrapper",
@@ -23,7 +27,11 @@ export default {
       title: 'Main Wrapper'
     }
   },
-  computed: {},
+  computed: {
+    ...mapGetters([
+      'CART'
+    ])
+  },
   methods: {},
   watch: {},
   mounted() {

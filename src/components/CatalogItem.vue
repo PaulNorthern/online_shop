@@ -1,9 +1,9 @@
 <template>
   <div class="catalog-item">
-    <img class="catalog-item__image" :src="imgLing" alt="изображние товара">
+    <img class="catalog-item__image" :src="imgLink" alt="изображние товара">
     <p class="catalog-item__name">{{ product_data.name }}</p>
     <p class="catalog-item__price">{{ product_data.price }} P.</p>
-    <button @click="sendDataToParent" class="catalog-item__add_to_cart_btn btn">Add to card</button>
+    <button @click="addToCart" class="catalog-item__add_to_cart_btn btn">Add to card</button>
   </div>
 </template>
 
@@ -19,19 +19,20 @@ export default {
     }
   },
   emits: {
-    sendArticle: {}
+    addToCart: {}
   },
   computed: {
-    imgLing(){
+    imgLink(){
       const fileName = this.product_data.image;
       return require(`../assets/images/${fileName}`);
     }
   },
   methods: {
-    sendDataToParent(){
-      this.$emit('sendArticle', this.product_data.article)
+    addToCart(){
+      this.$emit('addToCart', this.product_data)
     }
-  }
+  },
+
 }
 </script>
 

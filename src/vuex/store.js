@@ -8,7 +8,28 @@ export const store = new Vuex.Store({
     },
     mutations: {
         SET_PRODUCTS_TO_STATE: (state, products) => {
-            state.products = products
+            state.products = products;
+        },
+        SET_CART: (state, product) => {
+            if (state.cart.length){
+                // article - uniq key for iterate
+                let isProductExists = false;
+                state.cart.map((item) => {
+                    if (item.article === product.article){
+                        isProductExists = true;
+                        item.quantity += 1;
+                    }
+                })
+                if (!isProductExists){
+                    state.cart.push(product);
+                }
+            } else {
+                state.cart.push(product);
+            }
+
+        },
+        REMOVE_FROM_CART: (state, index) => {
+            state.cart.splice(index, 1)
         }
     }, // sync
     actions: {
@@ -24,11 +45,20 @@ export const store = new Vuex.Store({
                 console.log(error)
                 return error;
             })
+        },
+        ADD_TO_CART({commit}, product){
+            commit('SET_CART', product);
+        },
+        DELETE_FROM_CART({commit}, index){
+            commit('REMOVE_FROM_CART', index);
         }
     }, // async
     getters: {
         PRODUCTS(state){
             return state.products;
+        },
+        CART(state){
+            return state.cart
         }
     },
 });
