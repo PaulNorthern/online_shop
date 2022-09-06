@@ -1,6 +1,5 @@
 <template>
   <div>
-    Fuck YOu
     <MainWrapper/>
   </div>
 </template>
