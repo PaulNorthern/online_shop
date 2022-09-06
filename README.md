@@ -13,7 +13,6 @@ npm run serve
 ### Runs JSON fake api server
 ```
 json-server --watch db.json
-
 ```
 
 ### Compiles and minifies for production
