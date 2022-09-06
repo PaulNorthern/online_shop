@@ -1,15 +1,18 @@
 <template>
   <div>
     Fuck YOu
+    <MainWrapper/>
   </div>
 </template>
 
 <script>
 
+import MainWrapper from "@/components/MainWrapper";
+
 export default {
   name: 'App',
   components: {
-
+    MainWrapper
   }
 }
 </script>
