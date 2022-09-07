@@ -9,10 +9,6 @@
 
 <script>
 
-import Catalog from "@/components/Catalog";
-import Card from "@/components/Card";
-import {mapGetters} from "vuex";
-
 export default {
   name: "MainWrapper",
 
